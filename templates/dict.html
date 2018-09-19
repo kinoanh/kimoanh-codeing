@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<a href ="/delete/{{post.id}}"><button>delete</button></a><br>
+
+    <br>
+    <h3>{{post.title}}</h3>
+    <div>{{post.author}}</div>
+    <p>{{post.content}}</p>
+    <form method="POST">
+    <label for="">new title</label>
+    <textarea name="new_title" id="" cols="30" rows="10"></textarea> <br>
+
+    </form>
+    <a href="/update/{{post.id}}"><button>update</button></a>
+
+  
+</body>
+</html>
