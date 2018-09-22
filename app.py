@@ -8,7 +8,7 @@ mlab.connect()
 @app.route("/post/<post_id>")
 def post(post_id):
     post = Post.objects().with_id(post_id)
-    return render_template("dict.html", post=post)
+    return render_template("post.html", post=post)
 @app.route("/delete/<post_id>")
 def delete_one_data(post_id):
 
@@ -27,9 +27,14 @@ def delete_one_data(post_id):
 def update(post_id, new_title):
     
     post=Post.objects().with_id(post_id)
-    form=request.form 
-    new_title=form['new_title']
-    post.update(set__title= new_title)
+    if request.method == 'GET':
+        return render_template('update.html', post=post)
+    elif request.method == 'POST':
+        form= request.form 
+        t=form['title']
+        a= form['author']
+        c =form['content']
+        post.update(set__title= t , set__author= a, set__content=c)
 
 
 @app.route("/posts")
