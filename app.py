@@ -23,9 +23,8 @@ def delete_one_data(post_id):
 
 
 
-@app.route("/update/<post_id>")
-def update(post_id, new_title):
-    
+@app.route("/update/<post_id>", methods = ['GET', 'POST'])
+def update(post_id):
     post=Post.objects().with_id(post_id)
     if request.method == 'GET':
         return render_template('update.html', post=post)
@@ -35,7 +34,7 @@ def update(post_id, new_title):
         a= form['author']
         c =form['content']
         post.update(set__title= t , set__author= a, set__content=c)
-
+        return redirect(url_for("posts"))
 
 @app.route("/posts")
 def posts():
